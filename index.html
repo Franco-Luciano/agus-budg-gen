@@ -7,22 +7,29 @@
 
     <style>
       :root {
-        --bg: #2a211f;
-        --bg-2: #382b27;
-        --panel: #f3ece4;
-        --panel-2: #eadfd4;
-        --paper: #f6efe8;
-        --paper-2: #efe4d8;
-        --terra: #b97a5b;
-        --terra-deep: #8a5a43;
-        --terra-soft: #d9b7a3;
-        --nude: #d8c3b4;
-        --nude-2: #cbb2a1;
-        --text: #332622;
-        --text-soft: #7c675d;
-        --line: rgba(51, 38, 34, 0.16);
+        --bg: #2c2422;
+        --bg-2: #3a302d;
+
+        --panel: #f6efe9;
+        --panel-2: #efe4d9;
+
+        --paper: #fcf7f2;
+        --paper-2: #f6eee6;
+
+        --terra: #cda18a;
+        --terra-deep: #b5836d;
+        --terra-soft: #e7cfc2;
+
+        --nude: #ead9cd;
+        --nude-2: #e2cec0;
+        --nude-3: #f3e7de;
+
+        --text: #4b3a34;
+        --text-soft: #8c756b;
+        --line: rgba(75, 58, 52, 0.14);
+
         --white: #ffffff;
-        --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
       }
 
       * {
@@ -196,8 +203,8 @@
       }
 
       /* =======================
-         PDF
-      ======================= */
+   PDF
+======================= */
       .pdf-shell {
         position: fixed;
         left: -99999px;
@@ -225,7 +232,7 @@
         left: -10mm;
         width: 230mm;
         height: 62mm;
-        background: #9c6a52;
+        background: #e0c7ba;
         transform: rotate(-10deg);
       }
 
@@ -236,7 +243,7 @@
         right: -10mm;
         width: 230mm;
         height: 62mm;
-        background: #9c6a52;
+        background: #c89d87;
         transform: rotate(-10deg);
       }
 
@@ -246,7 +253,7 @@
         right: -2mm;
         width: 72mm;
         height: 42mm;
-        background: #dcc7b7;
+        background: #ead9cd;
         border-bottom-left-radius: 100mm;
         z-index: 1;
       }
@@ -257,7 +264,7 @@
         left: -6mm;
         width: 78mm;
         height: 40mm;
-        background: #d8c0ad;
+        background: #e5d2c5;
         border-top-right-radius: 100mm;
         z-index: 1;
       }
@@ -274,9 +281,9 @@
         right: 24mm;
         bottom: 28mm;
         width: 62mm;
-        opacity: 0.05;
+        opacity: 0.045;
         pointer-events: none;
-        filter: sepia(0.4) saturate(0.7);
+        filter: sepia(0.18) saturate(0.75) brightness(1.02);
       }
 
       .pdf-header {
@@ -290,7 +297,7 @@
       .pdf-client-block {
         width: 52%;
         font-size: 10.5pt;
-        color: #5c4b44;
+        color: #6d5a52;
       }
 
       .pdf-client-block strong {
@@ -337,8 +344,8 @@
       }
 
       .pdf-table thead th {
-        background: #a56f55;
-        color: white;
+        background: #c79a84;
+        color: #fffdfb;
         font-weight: 600;
         padding: 8px 10px;
         text-align: center;
@@ -350,8 +357,8 @@
 
       .pdf-table tbody td {
         padding: 8px 10px;
-        border-bottom: 1px solid rgba(90, 58, 43, 0.22);
-        color: #4d3d37;
+        border-bottom: 1px solid rgba(120, 92, 78, 0.18);
+        color: #5d4b44;
       }
 
       .pdf-table tbody td:nth-child(2),
@@ -370,7 +377,7 @@
       }
 
       .pdf-note {
-        color: #5a4a43;
+        color: #6c5951;
         font-size: 10.5pt;
         line-height: 1.45;
       }
@@ -384,7 +391,7 @@
         width: 100%;
         max-width: 58mm;
         font-size: 10.5pt;
-        color: #4d3d37;
+        color: #5c4942;
       }
 
       .pdf-total-row {
@@ -411,7 +418,7 @@
 
       .pdf-contact {
         font-size: 10.5pt;
-        color: #5b4a43;
+        color: #6a574f;
         line-height: 1.45;
       }
 
@@ -430,7 +437,7 @@
       }
 
       .pdf-sign-line {
-        border-top: 1px solid rgba(90, 58, 43, 0.55);
+        border-top: 1px solid rgba(120, 92, 78, 0.45);
         margin-bottom: 4px;
         width: 100%;
       }
@@ -442,9 +449,8 @@
 
       .pdf-sign-label {
         font-size: 9.5pt;
-        color: #6f5b52;
+        color: #877168;
       }
-
       @page {
         size: A4;
         margin: 0;
@@ -482,20 +488,6 @@
         .pdf-page {
           width: 210mm;
           min-height: 297mm;
-        }
-      }
-
-      @media (max-width: 560px) {
-        .service-row {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .service-row input:nth-child(1) {
-          grid-column: 1 / -1;
-        }
-
-        .remove-btn {
-          width: 100%;
         }
       }
     </style>
