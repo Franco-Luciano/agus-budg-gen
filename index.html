@@ -7,14 +7,20 @@
 
     <style>
       :root {
-        --bg: #1f1b20;
-        --panel: #f4efe8;
-        --panel-2: #efe7dc;
-        --text: #2c2220;
-        --muted: #726763;
-        --line: rgba(44, 34, 32, 0.18);
-        --dark: #1f1b20;
-        --accent: #e3bd2d;
+        --bg: #2a211f;
+        --bg-2: #382b27;
+        --panel: #f3ece4;
+        --panel-2: #eadfd4;
+        --paper: #f6efe8;
+        --paper-2: #efe4d8;
+        --terra: #b97a5b;
+        --terra-deep: #8a5a43;
+        --terra-soft: #d9b7a3;
+        --nude: #d8c3b4;
+        --nude-2: #cbb2a1;
+        --text: #332622;
+        --text-soft: #7c675d;
+        --line: rgba(51, 38, 34, 0.16);
         --white: #ffffff;
         --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
       }
@@ -26,7 +32,7 @@
       body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(180deg, #211b20 0%, #2a2228 100%);
+        background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
         color: var(--text);
         padding: 16px;
       }
@@ -45,19 +51,20 @@
       .panel {
         background: linear-gradient(
           180deg,
-          rgba(244, 239, 232, 0.98) 0%,
-          rgba(239, 231, 220, 0.98) 100%
+          rgba(243, 236, 228, 0.98) 0%,
+          rgba(234, 223, 212, 0.98) 100%
         );
         border-radius: 28px;
         padding: 20px;
         box-shadow: var(--shadow);
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
 
       .eyebrow {
         text-transform: uppercase;
         letter-spacing: 0.14em;
         font-size: 0.78rem;
-        color: var(--muted);
+        color: var(--text-soft);
         margin-bottom: 8px;
       }
 
@@ -70,7 +77,7 @@
 
       .intro {
         margin: 0 0 20px;
-        color: var(--muted);
+        color: var(--text-soft);
         line-height: 1.5;
         max-width: 34ch;
       }
@@ -95,12 +102,19 @@
       .field textarea,
       .service-row input {
         width: 100%;
-        border: 1px solid rgba(44, 34, 32, 0.12);
-        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(51, 38, 34, 0.12);
+        background: rgba(255, 255, 255, 0.7);
         color: var(--text);
         border-radius: 16px;
         padding: 14px 16px;
         outline: none;
+      }
+
+      .field input:focus,
+      .field textarea:focus,
+      .service-row input:focus {
+        border-color: rgba(185, 122, 91, 0.45);
+        box-shadow: 0 0 0 3px rgba(185, 122, 91, 0.12);
       }
 
       .field textarea {
@@ -136,9 +150,13 @@
         width: 46px;
         height: 46px;
         border-radius: 14px;
-        background: rgba(44, 34, 32, 0.08);
-        color: var(--text);
+        background: rgba(185, 122, 91, 0.12);
+        color: var(--terra-deep);
         font-size: 1.2rem;
+      }
+
+      .remove-btn:hover {
+        background: rgba(185, 122, 91, 0.2);
       }
 
       .secondary-btn,
@@ -150,13 +168,25 @@
       }
 
       .secondary-btn {
-        background: rgba(44, 34, 32, 0.08);
-        color: var(--text);
+        background: rgba(185, 122, 91, 0.12);
+        color: var(--terra-deep);
+      }
+
+      .secondary-btn:hover {
+        background: rgba(185, 122, 91, 0.18);
       }
 
       .primary-btn {
-        background: var(--dark);
+        background: linear-gradient(
+          180deg,
+          var(--terra) 0%,
+          var(--terra-deep) 100%
+        );
         color: var(--white);
+      }
+
+      .primary-btn:hover {
+        filter: brightness(1.03);
       }
 
       .actions {
@@ -181,7 +211,11 @@
         min-height: 297mm;
         position: relative;
         overflow: hidden;
-        background: #f7f4ef;
+        background: linear-gradient(
+          180deg,
+          var(--paper) 0%,
+          var(--paper-2) 100%
+        );
       }
 
       .pdf-page::before {
@@ -191,9 +225,8 @@
         left: -10mm;
         width: 230mm;
         height: 62mm;
-        background: var(--dark);
+        background: #9c6a52;
         transform: rotate(-10deg);
-        transform-origin: left top;
       }
 
       .pdf-page::after {
@@ -203,9 +236,8 @@
         right: -10mm;
         width: 230mm;
         height: 62mm;
-        background: var(--dark);
+        background: #9c6a52;
         transform: rotate(-10deg);
-        transform-origin: right bottom;
       }
 
       .pdf-accent-top {
@@ -214,7 +246,7 @@
         right: -2mm;
         width: 72mm;
         height: 42mm;
-        background: var(--accent);
+        background: #dcc7b7;
         border-bottom-left-radius: 100mm;
         z-index: 1;
       }
@@ -225,7 +257,7 @@
         left: -6mm;
         width: 78mm;
         height: 40mm;
-        background: var(--accent);
+        background: #d8c0ad;
         border-top-right-radius: 100mm;
         z-index: 1;
       }
@@ -244,6 +276,7 @@
         width: 62mm;
         opacity: 0.05;
         pointer-events: none;
+        filter: sepia(0.4) saturate(0.7);
       }
 
       .pdf-header {
@@ -257,12 +290,12 @@
       .pdf-client-block {
         width: 52%;
         font-size: 10.5pt;
-        color: #4e4542;
+        color: #5c4b44;
       }
 
       .pdf-client-block strong {
         display: block;
-        color: #1f1b20;
+        color: var(--text);
         font-size: 12pt;
         letter-spacing: 0.05em;
         margin-bottom: 4mm;
@@ -285,14 +318,14 @@
         font-size: 18pt;
         font-weight: 900;
         letter-spacing: 0.01em;
-        color: #1f1b20;
+        color: var(--text);
         margin: 0;
       }
 
       .pdf-date {
         font-size: 11.5pt;
         font-weight: 800;
-        color: #1f1b20;
+        color: var(--text);
         margin-bottom: 6mm;
       }
 
@@ -304,9 +337,9 @@
       }
 
       .pdf-table thead th {
-        background: #221d21;
+        background: #a56f55;
         color: white;
-        font-weight: 500;
+        font-weight: 600;
         padding: 8px 10px;
         text-align: center;
       }
@@ -317,8 +350,8 @@
 
       .pdf-table tbody td {
         padding: 8px 10px;
-        border-bottom: 1px solid rgba(31, 27, 32, 0.24);
-        color: #453c39;
+        border-bottom: 1px solid rgba(90, 58, 43, 0.22);
+        color: #4d3d37;
       }
 
       .pdf-table tbody td:nth-child(2),
@@ -337,7 +370,7 @@
       }
 
       .pdf-note {
-        color: #4e4542;
+        color: #5a4a43;
         font-size: 10.5pt;
         line-height: 1.45;
       }
@@ -351,7 +384,7 @@
         width: 100%;
         max-width: 58mm;
         font-size: 10.5pt;
-        color: #453c39;
+        color: #4d3d37;
       }
 
       .pdf-total-row {
@@ -364,7 +397,7 @@
       .pdf-total-row.final {
         font-size: 14pt;
         font-weight: 800;
-        color: #1f1b20;
+        color: var(--text);
         padding-top: 4px;
       }
 
@@ -378,14 +411,14 @@
 
       .pdf-contact {
         font-size: 10.5pt;
-        color: #4e4542;
+        color: #5b4a43;
         line-height: 1.45;
       }
 
       .pdf-contact strong {
         display: block;
         margin-bottom: 3mm;
-        color: #1f1b20;
+        color: var(--text);
       }
 
       .pdf-signature-wrap {
@@ -393,11 +426,11 @@
         justify-self: end;
         width: 74mm;
         text-align: center;
-        color: #1f1b20;
+        color: var(--text);
       }
 
       .pdf-sign-line {
-        border-top: 1px solid rgba(31, 27, 32, 0.55);
+        border-top: 1px solid rgba(90, 58, 43, 0.55);
         margin-bottom: 4px;
         width: 100%;
       }
@@ -409,7 +442,7 @@
 
       .pdf-sign-label {
         font-size: 9.5pt;
-        color: #4e4542;
+        color: #6f5b52;
       }
 
       @page {
@@ -418,6 +451,12 @@
       }
 
       @media print {
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+
+        html,
         body {
           margin: 0;
           padding: 0;
@@ -589,7 +628,7 @@
           <footer class="pdf-footer">
             <div class="pdf-contact">
               <strong>Agustina Passicot</strong>
-              <div>agustinapassicot@gmail.com</div>
+              <div>passicotagustina@gmail.com</div>
               <div>+54 9 3472 52-0029</div>
             </div>
 
