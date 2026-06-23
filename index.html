@@ -3,33 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presupuestos — Agustina Passicot</title>
+    <title>Presupuestos — Nanna</title>
 
     <style>
       :root {
-        --bg: #2c2422;
-        --bg-2: #3a302d;
+        --bg: #1a1714;
+        --bg-2: #2a2520;
 
-        --panel: #f6efe9;
-        --panel-2: #efe4d9;
+        --panel: #f6ebdb;
+        --panel-2: #ecdfc9;
 
-        --paper: #fcf7f2;
-        --paper-2: #f6eee6;
+        --paper: #fbf3e6;
+        --paper-2: #f1e2c8;
 
-        --terra: #cda18a;
-        --terra-deep: #b5836d;
-        --terra-soft: #e7cfc2;
+        --burgundy: #1c1a17;
+        --burgundy-deep: #0d0c0b;
+        --burgundy-soft: #c9b89f;
 
-        --nude: #ead9cd;
-        --nude-2: #e2cec0;
-        --nude-3: #f3e7de;
+        --rose: #d6c4a5;
+        --rose-soft: #ebdcc4;
+        --cream: #f4e4d2;
 
-        --text: #4b3a34;
-        --text-soft: #8c756b;
-        --line: rgba(75, 58, 52, 0.14);
+        --text: #1c1a17;
+        --text-soft: #75695a;
+        --line: rgba(28, 26, 23, 0.16);
 
         --white: #ffffff;
-        --shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
       }
 
       * {
@@ -42,6 +42,57 @@
         background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
         color: var(--text);
         padding: 16px;
+      }
+
+      .remove-btn,
+      .secondary-btn,
+      .primary-btn {
+        border: none;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .remove-btn {
+        background: rgba(28, 26, 23, 0.1);
+        color: var(--burgundy);
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        font-size: 1.2rem;
+      }
+
+      .remove-btn:hover {
+        background: rgba(28, 26, 23, 0.18);
+      }
+
+      .secondary-btn,
+      .primary-btn {
+        width: 100%;
+        border-radius: 18px;
+        padding: 14px 16px;
+        font-weight: 700;
+      }
+
+      .secondary-btn {
+        background: rgba(28, 26, 23, 0.1);
+        color: var(--burgundy);
+      }
+
+      .secondary-btn:hover {
+        background: rgba(28, 26, 23, 0.18);
+      }
+
+      .primary-btn {
+        background: linear-gradient(
+          180deg,
+          var(--burgundy) 0%,
+          var(--burgundy-deep) 100%
+        );
+        color: var(--white);
+      }
+
+      .primary-btn:hover {
+        filter: brightness(1.08);
       }
 
       button,
@@ -120,8 +171,8 @@
       .field input:focus,
       .field textarea:focus,
       .service-row input:focus {
-        border-color: rgba(185, 122, 91, 0.45);
-        box-shadow: 0 0 0 3px rgba(185, 122, 91, 0.12);
+        border-color: rgba(28, 26, 23, 0.45);
+        box-shadow: 0 0 0 3px rgba(28, 26, 23, 0.14);
       }
 
       .field textarea {
@@ -143,57 +194,6 @@
         grid-template-columns: 1.55fr 0.7fr 0.8fr 46px;
         gap: 10px;
         align-items: center;
-      }
-
-      .remove-btn,
-      .secondary-btn,
-      .primary-btn {
-        border: none;
-        cursor: pointer;
-        transition: 0.2s ease;
-      }
-
-      .remove-btn {
-        width: 46px;
-        height: 46px;
-        border-radius: 14px;
-        background: rgba(185, 122, 91, 0.12);
-        color: var(--terra-deep);
-        font-size: 1.2rem;
-      }
-
-      .remove-btn:hover {
-        background: rgba(185, 122, 91, 0.2);
-      }
-
-      .secondary-btn,
-      .primary-btn {
-        width: 100%;
-        border-radius: 18px;
-        padding: 14px 16px;
-        font-weight: 700;
-      }
-
-      .secondary-btn {
-        background: rgba(185, 122, 91, 0.12);
-        color: var(--terra-deep);
-      }
-
-      .secondary-btn:hover {
-        background: rgba(185, 122, 91, 0.18);
-      }
-
-      .primary-btn {
-        background: linear-gradient(
-          180deg,
-          var(--terra) 0%,
-          var(--terra-deep) 100%
-        );
-        color: var(--white);
-      }
-
-      .primary-btn:hover {
-        filter: brightness(1.03);
       }
 
       .actions {
@@ -218,137 +218,135 @@
         min-height: 297mm;
         position: relative;
         overflow: hidden;
-        background: linear-gradient(
-          180deg,
-          var(--paper) 0%,
-          var(--paper-2) 100%
-        );
-      }
-
-      .pdf-page::before {
-        content: "";
-        position: absolute;
-        top: -30mm;
-        left: -10mm;
-        width: 230mm;
-        height: 62mm;
-        background: #e0c7ba;
-        transform: rotate(-10deg);
-      }
-
-      .pdf-page::after {
-        content: "";
-        position: absolute;
-        bottom: -28mm;
-        right: -10mm;
-        width: 230mm;
-        height: 62mm;
-        background: #c89d87;
-        transform: rotate(-10deg);
-      }
-
-      .pdf-accent-top {
-        position: absolute;
-        top: -8mm;
-        right: -2mm;
-        width: 72mm;
-        height: 42mm;
-        background: #ead9cd;
-        border-bottom-left-radius: 100mm;
-        z-index: 1;
-      }
-
-      .pdf-accent-bottom {
-        position: absolute;
-        bottom: -10mm;
-        left: -6mm;
-        width: 78mm;
-        height: 40mm;
-        background: #e5d2c5;
-        border-top-right-radius: 100mm;
-        z-index: 1;
+        background: var(--paper);
       }
 
       .pdf-content {
         position: relative;
         z-index: 2;
-        padding: 34mm 22mm 22mm;
+        padding: 14mm 18mm 18mm;
         min-height: 297mm;
       }
 
       .pdf-watermark {
         position: absolute;
-        right: 24mm;
-        bottom: 28mm;
-        width: 62mm;
-        opacity: 0.045;
+        right: 18mm;
+        bottom: 22mm;
+        width: 58mm;
+        opacity: 0.05;
         pointer-events: none;
-        filter: sepia(0.18) saturate(0.75) brightness(1.02);
       }
 
-      .pdf-header {
+      .pdf-brand-row {
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        align-items: flex-start;
-        gap: 18mm;
-        margin-bottom: 20mm;
-      }
-
-      .pdf-client-block {
-        width: 52%;
-        font-size: 10.5pt;
-        color: #6d5a52;
-      }
-
-      .pdf-client-block strong {
-        display: block;
-        color: var(--text);
-        font-size: 12pt;
-        letter-spacing: 0.05em;
-        margin-bottom: 4mm;
+        gap: 12mm;
+        padding-bottom: 5mm;
+        margin-bottom: 6mm;
+        border-bottom: 2px solid var(--burgundy);
       }
 
       .pdf-brand {
-        width: 48%;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 4mm;
       }
 
       .pdf-logo {
-        width: 36mm;
+        width: 16mm;
         height: auto;
-        display: block;
-        margin: 0 auto 4mm;
         object-fit: contain;
       }
 
-      .pdf-brand-name {
-        font-size: 18pt;
-        font-weight: 900;
-        letter-spacing: 0.01em;
+      .pdf-brand-text {
+        font-size: 10.5pt;
+        line-height: 1.2;
         color: var(--text);
-        margin: 0;
       }
 
-      .pdf-date {
-        font-size: 11.5pt;
+      .pdf-brand-text strong {
+        display: block;
+        font-size: 13pt;
         font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .pdf-brand-text span {
+        color: var(--text-soft);
+        font-size: 8.5pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .pdf-title-block {
+        text-align: right;
+        line-height: 1;
+      }
+
+      .pdf-title {
+        margin: 0 0 2mm;
+        font-size: 22pt;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        color: var(--burgundy);
+        line-height: 1;
+      }
+
+      .pdf-doc-meta {
+        font-size: 9.5pt;
         color: var(--text);
+        line-height: 1.4;
+      }
+
+      .pdf-doc-meta strong {
+        color: var(--burgundy);
+        font-weight: 700;
+      }
+
+      .pdf-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12mm;
         margin-bottom: 6mm;
+      }
+
+      .pdf-info-block {
+        font-size: 10.5pt;
+        color: var(--text);
+        line-height: 1.55;
+      }
+
+      .pdf-info-block .info-title {
+        display: block;
+        color: var(--burgundy);
+        font-size: 9.5pt;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 3mm;
+      }
+
+      .pdf-info-block div {
+        color: #3a342c;
       }
 
       .pdf-table {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 8mm;
+        margin-bottom: 0;
         font-size: 10.5pt;
       }
 
       .pdf-table thead th {
-        background: #c79a84;
-        color: #fffdfb;
-        font-weight: 600;
-        padding: 8px 10px;
+        background: var(--burgundy);
+        color: #fff;
+        font-weight: 700;
+        padding: 10px 12px;
         text-align: center;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 9.5pt;
       }
 
       .pdf-table thead th:first-child {
@@ -356,9 +354,10 @@
       }
 
       .pdf-table tbody td {
-        padding: 8px 10px;
-        border-bottom: 1px solid rgba(120, 92, 78, 0.18);
-        color: #5d4b44;
+        padding: 9px 12px;
+        border-bottom: 1px solid rgba(28, 26, 23, 0.14);
+        color: #2c2620;
+        background: rgba(255, 255, 255, 0.55);
       }
 
       .pdf-table tbody td:nth-child(2),
@@ -370,16 +369,16 @@
 
       .pdf-bottom {
         display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
+        grid-template-columns: 1.25fr 0.75fr;
         gap: 12mm;
         align-items: start;
-        margin-top: 4mm;
+        margin-top: 8mm;
       }
 
       .pdf-note {
-        color: #6c5951;
+        color: #3a342c;
         font-size: 10.5pt;
-        line-height: 1.45;
+        line-height: 1.5;
       }
 
       .pdf-note p {
@@ -389,23 +388,33 @@
       .pdf-totals {
         justify-self: end;
         width: 100%;
-        max-width: 58mm;
+        max-width: 70mm;
         font-size: 10.5pt;
-        color: #5c4942;
+        color: var(--text);
+        overflow: hidden;
+        border-radius: 4px;
       }
 
       .pdf-total-row {
         display: flex;
         justify-content: space-between;
         gap: 12px;
-        padding: 3px 0;
+        padding: 6px 10px;
+        background: var(--rose-soft);
+      }
+
+      .pdf-total-row + .pdf-total-row {
+        margin-top: 2px;
       }
 
       .pdf-total-row.final {
         font-size: 14pt;
         font-weight: 800;
+        background: var(--white);
         color: var(--text);
-        padding-top: 4px;
+        padding: 10px 10px 4px;
+        border-top: 2px solid var(--text);
+        margin-top: 4px;
       }
 
       .pdf-footer {
@@ -413,19 +422,23 @@
         grid-template-columns: 1fr 1fr;
         gap: 18mm;
         align-items: end;
-        margin-top: 22mm;
+        margin-top: 20mm;
+        padding-top: 8mm;
+        border-top: 1px solid rgba(28, 26, 23, 0.18);
       }
 
       .pdf-contact {
-        font-size: 10.5pt;
-        color: #6a574f;
-        line-height: 1.45;
+        font-size: 10pt;
+        color: #3a342c;
+        line-height: 1.5;
       }
 
       .pdf-contact strong {
         display: block;
-        margin-bottom: 3mm;
-        color: var(--text);
+        margin-bottom: 2mm;
+        color: var(--burgundy);
+        font-size: 10.5pt;
+        letter-spacing: 0.04em;
       }
 
       .pdf-signature-wrap {
@@ -437,7 +450,7 @@
       }
 
       .pdf-sign-line {
-        border-top: 1px solid rgba(120, 92, 78, 0.45);
+        border-top: 1px solid rgba(28, 26, 23, 0.5);
         margin-bottom: 4px;
         width: 100%;
       }
@@ -448,8 +461,10 @@
       }
 
       .pdf-sign-label {
-        font-size: 9.5pt;
-        color: #877168;
+        font-size: 9pt;
+        color: var(--text-soft);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
       }
       @page {
         size: A4;
@@ -564,28 +579,42 @@
 
     <div class="pdf-shell" aria-hidden="true">
       <section class="pdf-page" id="pdf-page">
-        <div class="pdf-accent-top"></div>
-        <div class="pdf-accent-bottom"></div>
-
         <article class="pdf-content">
           <img class="pdf-watermark" src="logo.png" alt="" />
 
-          <header class="pdf-header">
-            <div class="pdf-client-block">
-              <strong>DATOS DEL CLIENTE</strong>
+          <header class="pdf-brand-row">
+            <div class="pdf-brand">
+              <img class="pdf-logo" src="logo.png" alt="Nanna" />
+              <div class="pdf-brand-text">
+                <strong>Nanna</strong>
+                <span>Branding Strategy | Digital Management & Design</span>
+              </div>
+            </div>
+
+            <div class="pdf-title-block">
+              <h1 class="pdf-title">PRESUPUESTO</h1>
+              <div class="pdf-doc-meta">
+                <div><strong>Fecha:</strong> <span id="preview-date">—</span></div>
+              </div>
+            </div>
+          </header>
+
+          <section class="pdf-info-grid">
+            <div class="pdf-info-block">
+              <span class="info-title">Datos del cliente</span>
               <div id="preview-client-name">Nombre: —</div>
               <div id="preview-client-address">Dirección: —</div>
               <div id="preview-client-email">Mail: —</div>
               <div id="preview-client-phone">Teléfono: —</div>
             </div>
 
-            <div class="pdf-brand">
-              <img class="pdf-logo" src="logo.png" alt="Agustina Passicot" />
-              <p class="pdf-brand-name">Presupuesto</p>
+            <div class="pdf-info-block">
+              <span class="info-title">Contacto</span>
+              <div>Nanna</div>
+              <div>passicotagustina@gmail.com</div>
+              <div>+54 9 3472 52-0029</div>
             </div>
-          </header>
-
-          <div class="pdf-date" id="preview-date">Fecha: —</div>
+          </section>
 
           <table class="pdf-table">
             <thead>
@@ -619,9 +648,9 @@
 
           <footer class="pdf-footer">
             <div class="pdf-contact">
-              <strong>Agustina Passicot</strong>
-              <div>passicotagustina@gmail.com</div>
-              <div>+54 9 3472 52-0029</div>
+              <strong>Gracias por confiar</strong>
+              <div>Válido por 15 días desde la fecha de emisión.</div>
+              <div>Cualquier consulta estamos a disposición.</div>
             </div>
 
             <div class="pdf-signature-wrap">
@@ -733,7 +762,7 @@
         previewClientAddress.textContent = `Dirección: ${clientAddressInput.value || "—"}`;
         previewClientEmail.textContent = `Mail: ${clientEmailInput.value || "—"}`;
         previewClientPhone.textContent = `Teléfono: ${clientPhoneInput.value || "—"}`;
-        previewDate.textContent = `Fecha: ${formatDate(budgetDateInput.value)}`;
+        previewDate.textContent = formatDate(budgetDateInput.value);
         previewNote.textContent = `Nota: ${budgetNoteInput.value || "Sin observaciones."}`;
         signatureName.textContent = clientNameInput.value || "Cliente";
 
